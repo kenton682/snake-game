@@ -7,7 +7,6 @@ let score = 0;
 
 export function update() {
     addSegments()
-
     const inputDirection = getInputDirection()
     for(let i = snakeBody.length - 2; i>=0; i--){
         snakeBody[i+1] = {...snakeBody[i]}
@@ -15,6 +14,7 @@ export function update() {
 
     snakeBody[0].x += inputDirection.x
     snakeBody[0].y += inputDirection.y
+    document.getElementById('score').innerHTML = `Size: ${snakeBody.length}`
 }
 
 export function draw(gameBoard) {
@@ -29,8 +29,6 @@ export function draw(gameBoard) {
 
   export function expandSnake(amount) {
     newSegments += amount
-    score += newSegments
-    document.getElementById('score').innerHTML = `Score: ${score}`
   }
 
   export function onSnake(position, {ignoreHead = false}={}){
